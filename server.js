@@ -1,31 +1,29 @@
 var http = require('http');
 var url  = require('url');
+var path = require('path');
+var fs = require('fs');
 
-http.createServer(requestHandler).listen(3000);
+function start(route,handle){
 
-// Two types of requests
-// Static Files requests
-// Dynamic Chat File Requests
+  function onRequest(request,response){
 
-function requestHandler(request,response){
-  response.writeHead(200,{
-    "Content-Type":"application/json"
-  });
-  response.write('Hello World');
-  response.end();
+    pathName = url.parse(request.url).pathname;
+    console.log(request);
 
-  var temp = request;
-  console.log(temp);
+    console.log("Request for"+pathName+" recieved");
 
+    route(handle,pathName,response,request);
+
+    console.log('Request for the'+pathName+' processed');
+
+  }
+
+  http.createServer(onRequest).listen(3000);
+
+  var timeStamp = new Date();
+
+  console.log('Server Started at'+ timeStamp);
 
 }
 
-function responseHandler(request,response){
-    response.writeHead(200,{
-      "Content-Type":"application/json"
-    });
-    response.write('Hello World');
-    var temp = request;
-    response.end();
-    console.log(request.url);
-}
+exports.start = start;

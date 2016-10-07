@@ -1,5 +1,27 @@
-<html>
+<!DOCTYPE html>
+<html ng-app="blitz">
 <head>
-  <title> Chatbot Client s</title>
+  <title> Chatbot Client</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="blitz-style.css" />
+  <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
 </head>
+<body ng-controller="blitzClient" ng-init="init()">
+<div class="container-fluid">
+  <div class="row">
+    <div class="chat-display">
+      <div class="text-box" ng-repeat="x in chat track by $index">
+        {{ x }}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="chat-input">
+      <input type="text" class="form-control" placeholder="Enter text..." ng-model="chatText.value">
+      <button type="button" class="btn btn-primary" ng-click="sendText()">Send</button>
+      </div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
 </html>

@@ -8,5 +8,9 @@
     "start": "node server.js"
   },
   "author": "Nirbhay Gupta",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7"
+  }
 }
