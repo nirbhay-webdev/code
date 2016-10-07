@@ -18,7 +18,7 @@ function start(route,handle){
 
   }
 
-  http.createServer(onRequest).listen(3000);
+  http.createServer(onRequest).listen(3000,'0.0.0.0');
 
   var timeStamp = new Date();
 
